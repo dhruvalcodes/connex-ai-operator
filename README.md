@@ -108,7 +108,6 @@ connex-ai-operator/
 ├── backend/
 │   ├── main.py
 │   ├── mock_data.json
-│   ├── .env
 │   └── requirements.txt
 │
 ├── frontend/
