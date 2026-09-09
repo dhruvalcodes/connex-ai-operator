@@ -1,0 +1,60 @@
+{
+  "leads": [
+    {
+      "id": 1,
+      "name": "Aisha Khan",
+      "company": "TechFlow",
+      "status": "new"
+    },
+    {
+      "id": 2,
+      "name": "James Wilson",
+      "company": "GreenTech",
+      "status": "contacted"
+    },
+    {
+      "id": 3,
+      "name": "Sofia Patel",
+      "company": "DataWorks",
+      "status": "new"
+    },
+    {
+      "id": 4,
+      "name": "Daniel Brown",
+      "company": "CloudNine",
+      "status": "qualified"
+    }
+  ],
+  "tasks": [
+    {
+      "id": 1,
+      "title": "Call Aisha Khan",
+      "due": "Friday",
+      "related_to": "Aisha Khan"
+    },
+    {
+      "id": 2,
+      "title": "Call Aisha Khan",
+      "due": "Friday",
+      "related_to": "Aisha Khan"
+    },
+    {
+      "id": 3,
+      "title": "Call Aisha Khan",
+      "due": "Friday",
+      "related_to": "Aisha Khan"
+    },
+    {
+      "id": 4,
+      "title": "Video call Aisha Khan",
+      "due": "Sunday",
+      "related_to": "Aisha Khan"
+    },
+    {
+      "id": 5,
+      "title": "Call Aisha Khan",
+      "due": "Friday",
+      "related_to": "Aisha Khan"
+    }
+  ]
+}

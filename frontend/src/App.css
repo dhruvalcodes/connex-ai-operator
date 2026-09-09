@@ -1,0 +1,808 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  color: #17181b;
+}
+
+/* =========================
+   BACKGROUND
+========================= */
+
+.app {
+  position: relative;
+
+  width: 100%;
+  height: 100vh;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(circle at 15% 15%,
+      rgba(112, 132, 255, 0.08),
+      transparent 24%),
+    radial-gradient(circle at 88% 85%,
+      rgba(74, 183, 173, 0.07),
+      transparent 25%),
+    #f6f7f9;
+}
+
+/* =========================
+   BRAND AREA
+========================= */
+
+.brand-area {
+  position: fixed;
+
+  top: 20px;
+  left: 20px;
+
+  z-index: 30;
+}
+
+.brand-card {
+  display: flex;
+  flex-direction: column;
+
+  gap: 13px;
+
+  padding: 11px;
+
+  border: 1px solid rgba(20, 20, 25, 0.08);
+
+  border-radius: 14px;
+
+  background: rgba(255, 255, 255, 0.82);
+
+  box-shadow:
+    0 8px 28px rgba(20, 20, 30, 0.06);
+
+  backdrop-filter: blur(18px);
+}
+
+/* =========================
+   LOGO
+========================= */
+
+.connex-logo {
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 11px;
+
+  background: #17181b;
+
+  color: #ffffff;
+
+  box-shadow:
+    0 5px 14px rgba(0, 0, 0, 0.14);
+}
+
+.connex-logo svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* =========================
+   BRAND TEXT
+========================= */
+
+.brand-main {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  padding-right: 8px;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+}
+
+.brand-name {
+  color: #17181b;
+
+  font-size: 17px;
+
+  font-weight: 750;
+
+  line-height: 18px;
+
+  letter-spacing: -0.45px;
+}
+
+.brand-subtitle {
+  margin-top: 3px;
+
+  color: #686a70;
+
+  font-size: 10px;
+
+  font-weight: 500;
+
+  line-height: 12px;
+
+  letter-spacing: 0.1px;
+}
+
+/* =========================
+   NEW CHAT
+========================= */
+
+.new-chat {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  padding: 8px 10px;
+
+  border: 1px solid #e0e1e4;
+
+  border-radius: 9px;
+
+  background: #fafafa;
+
+  color: #4d4e53;
+
+  font-size: 11px;
+
+  font-weight: 550;
+
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease,
+    transform 0.15s ease;
+}
+
+.new-chat:hover {
+  background: #f0f1f3;
+
+  border-color: #d2d3d6;
+
+  transform: translateY(-1px);
+}
+
+.plus {
+  font-size: 15px;
+
+  line-height: 10px;
+
+  font-weight: 400;
+}
+
+/* =========================
+   USER AVATAR
+========================= */
+
+.topbar {
+  position: fixed;
+
+  top: 20px;
+  right: 20px;
+
+  z-index: 30;
+}
+
+.avatar {
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #ffffff;
+
+  border: 1px solid #dedfe2;
+
+  color: #35363a;
+
+  font-size: 11px;
+
+  font-weight: 650;
+
+  box-shadow:
+    0 6px 18px rgba(20, 20, 30, 0.06);
+}
+
+/* =========================
+   MAIN
+========================= */
+
+.main {
+  width: 100%;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* =========================
+   CHAT
+========================= */
+
+.chat {
+  flex: 1;
+
+  width: min(920px, calc(100% - 48px));
+
+  margin: 0 auto;
+
+  padding: 105px 0 145px;
+
+  overflow-y: auto;
+
+  scrollbar-width: thin;
+}
+
+.chat::-webkit-scrollbar {
+  width: 5px;
+}
+
+.chat::-webkit-scrollbar-thumb {
+  background: #d0d1d4;
+
+  border-radius: 10px;
+}
+
+/* =========================
+   WELCOME
+========================= */
+
+.welcome {
+  min-height: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  padding-bottom: 70px;
+}
+
+.welcome-logo {
+  margin-bottom: 17px;
+
+  padding: 6px;
+
+  border-radius: 15px;
+
+  background: rgba(255, 255, 255, 0.75);
+
+  border: 1px solid rgba(20, 20, 25, 0.07);
+
+  box-shadow:
+    0 8px 25px rgba(0, 0, 0, 0.06);
+}
+
+.welcome-logo .connex-logo {
+  width: 46px;
+  height: 46px;
+
+  border-radius: 12px;
+}
+
+.welcome-logo .connex-logo svg {
+  width: 28px;
+  height: 28px;
+}
+
+.welcome h1 {
+  margin: 0;
+
+  color: #17181b;
+
+  font-size: 29px;
+
+  font-weight: 700;
+
+  letter-spacing: -0.9px;
+}
+
+.welcome p {
+  max-width: 500px;
+
+  margin: 9px 0 0;
+
+  color: #606268;
+
+  font-size: 14px;
+
+  line-height: 21px;
+}
+
+/* =========================
+   SUGGESTIONS
+========================= */
+
+.suggestions {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  justify-content: center;
+
+  gap: 8px;
+
+  margin-top: 24px;
+}
+
+.suggestions button {
+  padding: 9px 13px;
+
+  border: 1px solid #dedfe2;
+
+  border-radius: 9px;
+
+  background: #ffffff;
+
+  color: #45464b;
+
+  font-size: 12px;
+
+  box-shadow:
+    0 3px 10px rgba(0, 0, 0, 0.025);
+
+  transition: 0.15s ease;
+}
+
+.suggestions button:hover {
+  background: #f0f1f3;
+
+  border-color: #ccccd0;
+
+  color: #17181b;
+
+  transform: translateY(-1px);
+}
+
+/* =========================
+   MESSAGES
+========================= */
+
+.message-row {
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 10px;
+
+  width: 100%;
+
+  margin-bottom: 20px;
+}
+
+.user-row {
+  justify-content: flex-end;
+}
+
+.ai-avatar {
+  flex: 0 0 auto;
+
+  width: 30px;
+  height: 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 2px;
+
+  border-radius: 8px;
+
+  background: #ffffff;
+
+  border: 1px solid #dedfe2;
+}
+
+.ai-avatar .connex-logo {
+  width: 24px;
+  height: 24px;
+
+  border-radius: 7px;
+
+  box-shadow: none;
+}
+
+.ai-avatar .connex-logo svg {
+  width: 15px;
+  height: 15px;
+}
+
+.message {
+  max-width: 680px;
+
+  padding: 11px 14px;
+
+  border-radius: 13px;
+
+  box-shadow:
+    0 3px 12px rgba(0, 0, 0, 0.04);
+}
+
+.ai-message {
+  background: #ffffff;
+
+  border: 1px solid #e0e1e4;
+}
+
+.user-message {
+  background: #17181b;
+
+  color: #ffffff;
+}
+
+.message-label {
+  margin-bottom: 5px;
+
+  color: inherit;
+
+  font-size: 10px;
+
+  font-weight: 600;
+
+  opacity: 0.6;
+}
+
+.message-text {
+  color: inherit;
+
+  font-size: 14px;
+
+  line-height: 21px;
+
+  white-space: pre-wrap;
+}
+
+/* =========================
+   THINKING STATE
+========================= */
+
+.thinking {
+  display: flex;
+
+  align-items: center;
+
+  gap: 4px;
+
+  color: #777980;
+}
+
+.thinking>span:not(.thinking-text) {
+  width: 5px;
+  height: 5px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: #777980;
+
+  animation: thinking 1.2s infinite ease-in-out;
+}
+
+.thinking>span:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.thinking>span:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.thinking-text {
+  margin-left: 5px;
+
+  color: #777980;
+
+  font-size: 12px;
+
+  white-space: nowrap;
+}
+
+@keyframes thinking {
+
+  0%,
+  60%,
+  100% {
+    opacity: 0.25;
+
+    transform: translateY(0);
+  }
+
+  30% {
+    opacity: 1;
+
+    transform: translateY(-2px);
+  }
+}
+
+/* =========================
+   CONFIRMATION
+========================= */
+
+.confirmation-card {
+  margin-top: 14px;
+
+  padding-top: 12px;
+
+  border-top: 1px solid #dedfe2;
+}
+
+.confirmation-title {
+  margin-bottom: 9px;
+
+  color: #242529;
+
+  font-size: 12px;
+
+  font-weight: 650;
+}
+
+.confirmation-buttons {
+  display: flex;
+
+  gap: 7px;
+}
+
+.confirmation-buttons button {
+  padding: 7px 13px;
+
+  border-radius: 7px;
+
+  font-size: 12px;
+
+  font-weight: 600;
+}
+
+.confirm {
+  border: 1px solid #17181b;
+
+  background: #17181b;
+
+  color: #ffffff;
+}
+
+.confirm:hover {
+  background: #333438;
+}
+
+.cancel {
+  border: 1px solid #d7d8db;
+
+  background: #ffffff;
+
+  color: #44454a;
+}
+
+.cancel:hover {
+  background: #f0f1f3;
+}
+
+/* =========================
+   INPUT
+========================= */
+
+.input-container {
+  position: fixed;
+
+  bottom: 18px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  width: min(920px, calc(100% - 48px));
+
+  z-index: 20;
+}
+
+.input-box {
+  display: flex;
+
+  align-items: center;
+
+  width: 100%;
+
+  padding: 6px 7px 6px 15px;
+
+  border: 1px solid #d7d8dc;
+
+  border-radius: 13px;
+
+  background: rgba(255, 255, 255, 0.94);
+
+  box-shadow:
+    0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+.input-box:focus-within {
+  border-color: #b9babf;
+
+  box-shadow:
+    0 10px 35px rgba(0, 0, 0, 0.10);
+}
+
+.input-box input {
+  flex: 1;
+
+  min-width: 0;
+
+  border: none;
+
+  outline: none;
+
+  background: transparent;
+
+  color: #17181b;
+
+  font-size: 14px;
+}
+
+.input-box input::placeholder {
+  color: #777980;
+}
+
+.input-box input:disabled {
+  opacity: 0.6;
+
+  cursor: not-allowed;
+}
+
+.send-button {
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+
+  border-radius: 9px;
+
+  background: #17181b;
+
+  color: #ffffff;
+
+  font-size: 19px;
+
+  transition: 0.15s ease;
+}
+
+.send-button:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.send-button:disabled {
+  opacity: 0.25;
+
+  cursor: default;
+}
+
+.disclaimer {
+  margin: 7px 0 0;
+
+  text-align: center;
+
+  color: #66676c;
+
+  font-size: 10px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 650px) {
+  .brand-area {
+    top: 14px;
+    left: 14px;
+  }
+
+  .brand-card {
+    padding: 8px;
+
+    border-radius: 12px;
+  }
+
+  .new-chat {
+    padding: 7px 9px;
+  }
+
+  .topbar {
+    top: 14px;
+    right: 14px;
+  }
+
+  .chat {
+    width: calc(100% - 28px);
+
+    padding-top: 90px;
+    padding-bottom: 135px;
+  }
+
+  .input-container {
+    width: calc(100% - 28px);
+
+    bottom: 12px;
+  }
+
+  .welcome h1 {
+    font-size: 24px;
+  }
+
+  .welcome p {
+    font-size: 13px;
+  }
+
+  .suggestions {
+    flex-direction: column;
+
+    width: 100%;
+  }
+
+  .suggestions button {
+    width: 100%;
+  }
+
+  .message {
+    max-width: 82%;
+  }
+}
+
+.message-text p {
+  margin: 0 0 8px;
+}
+
+.message-text p:last-child {
+  margin-bottom: 0;
+}
+
+.message-text strong {
+  font-weight: 700;
+}
+
+.message-text ol,
+.message-text ul {
+  margin: 6px 0;
+  padding-left: 22px;
+}
+
+.message-text li {
+  margin: 3px 0;
+}
