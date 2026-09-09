@@ -248,4 +248,4 @@ The purpose of this project is to demonstrate an AI operator architecture with t
 
 BSc Computer Science (Artificial Intelligence) — Brunel University London
 
-Built for the **NexCell Solutions AI Engineer probationary challenge**.
+Built for the **NexCell Solutions AI Engineer Intern Task-1 **.
