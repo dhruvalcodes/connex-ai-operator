@@ -1,201 +1,251 @@
-ConneX AI Operator
+# ConneX AI Operator
 
-A small working prototype of an AI-powered CRM operator built for the NexCell Solutions probationary challenge.
+**An AI-powered CRM operator prototype built for the NexCell Solutions AI Engineer probationary challenge.**
 
-ConneX allows users to interact with a CRM through natural language. The AI can search mock CRM data and propose actions, while the backend code is responsible for actually reading and modifying the data.
+ConneX lets users interact with CRM data using natural language. A real Gemini model decides which operation is needed, while the backend tools perform the actual data operations against a safe, local mock CRM dataset.
 
-Features
+> **Core principle:** The model talks. Code operates.
 
-* Natural-language chat interface
-* Real Gemini language model integration
-* Typed tool calling
-* Read-only CRM lead search
-* Task creation with explicit user confirmation
-* Mock CRM dataset stored locally as JSON
-* Markdown-formatted AI responses
-* Loading/thinking state
-* Clear error handling
-* Clean ConneX-style interface
+## Overview
 
-Architecture
+This prototype demonstrates an AI-agent workflow where:
 
-React Frontend
-      ↓
-FastAPI Backend
-      ↓
-Gemini AI Model
-      ↓
-Typed Tools
-      ↓
-Mock CRM Data
-      ↓
-Tool Result
-      ↓
-Gemini
-      ↓
+- Users interact with CRM data through natural language.
+- Gemini selects the appropriate typed tool.
+- Read operations retrieve information from mock CRM data.
+- Write operations require explicit user confirmation.
+- Backend code performs the actual data changes.
+- Tool results are returned before the AI provides the final response.
+
+No real customer, client, or production CRM data is used.
+
+## Features
+
+- Real Gemini-powered conversational AI
+- Typed tool calling
+- Read-only CRM lead search
+- Task creation with explicit confirmation
+- Local JSON mock CRM dataset
+- React chat interface
+- Markdown-formatted AI responses
+- AI thinking/loading state
+- Clear error handling
+- Confirmation-first write operations
+
+## Architecture
+
+```text
 User
+  ↓
+React Frontend
+  ↓
+FastAPI Backend
+  ↓
+Gemini AI Model
+  ↓
+Typed Tools
+  ↓
+Mock CRM Data
+  ↓
+Tool Result
+  ↓
+Gemini
+  ↓
+User Response
+```
 
-The model decides which tool is required, but the backend code performs the actual operation.
+The AI decides what operation is required, but the backend code is responsible for actually reading or modifying the data.
 
-Tools
+## Tools
 
-1. search_leads
+### `search_leads`
 
-Type: Ask / Read-only
+**Type:** Ask / Read-only
 
-Searches the mock CRM leads by:
+Searches the mock CRM dataset by:
 
-* Name
-* Company
-* Status
+- Lead name
+- Company
+- Status
 
-This tool does not modify any data.
+This operation does not modify any data.
 
-2. create_task
+### `create_task`
 
-Type: Run / Write
+**Type:** Run / Write
 
 Creates a new task in the mock CRM dataset.
 
-Because this is a write operation, ConneX never executes it silently. The AI first presents the proposed task to the user and asks for explicit confirmation.
+Write operations require explicit user confirmation before execution.
 
 User request
-     ↓
-AI proposes task
-     ↓
+↓
+AI proposes action
+↓
 User confirms
-     ↓
-Backend creates task
+↓
+Backend executes tool
+↓
+Task is created
 
 If the user cancels, no data is changed.
 
-Safety Rules
+## Safety Principles
 
 The prototype follows these principles:
 
-1. The model talks, code operates.
-2. Write actions require explicit confirmation.
-3. The AI does not invent CRM data.
-4. Tool failures are surfaced clearly.
-5. Only mock data is used.
+1. **The model talks, code operates.**
+2. **Write operations require explicit confirmation.**
+3. **CRM information comes only from the mock dataset.**
+4. **The system does not claim an action succeeded unless the backend confirms it.**
+5. **Failures are surfaced clearly.**
+6. **No real CRM or customer data is used.**
 
-No real ConneX, client, or production CRM data is connected to this prototype.
+## Technology Stack
 
-Technology Stack
+| Component | Technology |
+|---|---|
+| Frontend | React + Vite |
+| Styling | CSS |
+| Markdown | React Markdown |
+| Backend | Python + FastAPI |
+| Validation | Pydantic |
+| AI | Google Gemini API |
+| Tool Calling | Gemini Function Calling |
+| Data | Local JSON |
 
-Frontend
+**Model:** `gemini-3.5-flash-lite`
 
-* React
-* Vite
-* React Markdown
-* CSS
-
-Backend
-
-* Python
-* FastAPI
-* Pydantic
-* Google Gemini API
-
-Data
-
-* Local JSON mock dataset
-
-Project Structure
-
+```text
+## Project Structure
 connex-ai-operator/
 │
 ├── backend/
 │   ├── main.py
 │   ├── mock_data.json
-│   └── requirements.txt
+│   ├── requirements.txt
+│   └── .gitignore
 │
 ├── frontend/
 │   ├── src/
 │   │   ├── App.jsx
-│   │   └── App.css
+│   │   ├── App.css
+│   │   └── main.jsx
 │   ├── package.json
 │   └── ...
 │
-└── README.md
+├── README.md
+└── .gitignore
+```
+The Gemini API key is stored locally in a `.env` file and excluded from Git.
 
-Running Locally
 
-1. Clone the repository
+## Running Locally
 
-git clone <YOUR-GITHUB-REPOSITORY-URL>
-cd connex-ai-operator
+### 1. Clone the repository
 
-2. Start the backend
+    git clone https://github.com/dhruvalcodes/connex-ai-operator.git
+    cd connex-ai-operator
 
-cd backend
-python -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
+### 2. Start the backend
 
-Create a .env file:
+    cd backend
+    python -m venv venv
+    source venv/bin/activate
+    pip install -r requirements.txt
 
-GEMINI_API_KEY=your_api_key_here
+Create a `.env` file inside the `backend` folder:
 
-Then start FastAPI:
+    GEMINI_API_KEY=your_api_key_here
 
-uvicorn main:app --reload
+Start the backend:
 
-The backend will run at:
+    uvicorn main:app --reload
 
-http://127.0.0.1:8000
+Backend:
 
-3. Start the frontend
+`http://127.0.0.1:8000`
 
-Open another terminal:
+API documentation:
 
-cd frontend
-npm install
-npm run dev
+`http://127.0.0.1:8000/docs`
 
-Then open the local Vite URL shown in the terminal, normally:
+### 3. Start the frontend
 
-http://localhost:5173
+Open a second terminal:
 
-Example Interactions
+    cd frontend
+    npm install
+    npm run dev
 
-Read operation
+Open the Vite URL shown in the terminal, normally:
 
-User:
-How many new leads do we have?
-ConneX:
-You have 2 new leads:
-1. Aisha Khan from TechFlow
-2. Sofia Patel from DataWorks
+`http://localhost:5173`
 
-Write operation
+## Example Interaction
 
-User:
-Create a task to call Aisha Khan on Friday.
-ConneX:
-I can create this task:
-Task: Call Aisha Khan
-Due: Friday
-Related to: Aisha Khan
-Would you like me to create it?
-User:
-Confirm
-ConneX:
-Done! Task 'Call Aisha Khan' has been created.
+### Read Operation
 
-Next Build Steps
+**User:**
 
-If developed further, the next steps would include:
+> How many new leads do we have?
 
-* Connecting the tools to real ConneX APIs
-* Authentication and permission checks
-* Audit logging
-* More CRM tools such as updating leads and retrieving tasks
-* Improved conversation/session management
-* Streaming AI responses
-* Production deployment
-* More comprehensive automated testing
+**ConneX:**
 
-Disclaimer
+> You have 2 new leads:
+>
+> 1. **Aisha Khan** — TechFlow
+> 2. **Sofia Patel** — DataWorks
 
-This prototype is for demonstration purposes only and uses an invented mock CRM dataset. It is not connected to production systems or real customer data.
+### Write Operation
+
+**User:**
+
+> Create a task to call Aisha Khan on Friday.
+
+**ConneX:**
+
+> I can create this task:
+>
+> **Task:** Call Aisha Khan  
+> **Due:** Friday  
+> **Related to:** Aisha Khan
+>
+> Would you like me to create it?
+
+The task is only created after the user selects **Confirm**.
+
+## Future Development
+
+Potential next steps for a production implementation:
+
+- Connect tools to real ConneX APIs
+- Authentication and permission checks
+- Audit logging
+- Additional CRM tools
+- Conversation and session management
+- Streaming AI responses
+- Automated testing
+- Production deployment
+- More robust tool validation and error handling
+
+## Project Scope
+
+This prototype uses an **invented mock CRM dataset** for demonstration purposes.
+
+It is not connected to:
+
+- Production ConneX systems
+- Real customer information
+- Client databases
+- External CRM accounts
+
+The purpose of this project is to demonstrate an AI operator architecture with typed tools and safe, confirmation-first actions.
+
+## Author
+
+**Dhruval Prajapati**
+
+BSc Computer Science (Artificial Intelligence) — Brunel University London
+
+Built for the **NexCell Solutions AI Engineer probationary challenge**.
