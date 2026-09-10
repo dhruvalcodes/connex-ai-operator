@@ -21,9 +21,6 @@ body {
   color: #17181b;
 }
 
-/* =========================
-   BACKGROUND
-========================= */
 
 .app {
   position: relative;
@@ -43,9 +40,6 @@ body {
     #f6f7f9;
 }
 
-/* =========================
-   BRAND AREA
-========================= */
 
 .brand-area {
   position: fixed;
@@ -76,9 +70,7 @@ body {
   backdrop-filter: blur(18px);
 }
 
-/* =========================
-   LOGO
-========================= */
+
 
 .connex-logo {
   width: 38px;
@@ -105,9 +97,6 @@ body {
   height: 24px;
 }
 
-/* =========================
-   BRAND TEXT
-========================= */
 
 .brand-main {
   display: flex;
@@ -151,9 +140,6 @@ body {
   letter-spacing: 0.1px;
 }
 
-/* =========================
-   NEW CHAT
-========================= */
 
 .new-chat {
   width: 100%;
@@ -200,9 +186,6 @@ body {
   font-weight: 400;
 }
 
-/* =========================
-   USER AVATAR
-========================= */
 
 .topbar {
   position: fixed;
@@ -237,9 +220,6 @@ body {
     0 6px 18px rgba(20, 20, 30, 0.06);
 }
 
-/* =========================
-   MAIN
-========================= */
 
 .main {
   width: 100%;
@@ -249,9 +229,6 @@ body {
   flex-direction: column;
 }
 
-/* =========================
-   CHAT
-========================= */
 
 .chat {
   flex: 1;
@@ -277,9 +254,6 @@ body {
   border-radius: 10px;
 }
 
-/* =========================
-   WELCOME
-========================= */
 
 .welcome {
   min-height: 100%;
@@ -346,9 +320,6 @@ body {
   line-height: 21px;
 }
 
-/* =========================
-   SUGGESTIONS
-========================= */
 
 .suggestions {
   display: flex;
@@ -391,9 +362,7 @@ body {
   transform: translateY(-1px);
 }
 
-/* =========================
-   MESSAGES
-========================= */
+
 
 .message-row {
   display: flex;
@@ -489,9 +458,6 @@ body {
   white-space: pre-wrap;
 }
 
-/* =========================
-   THINKING STATE
-========================= */
 
 .thinking {
   display: flex;
@@ -551,9 +517,6 @@ body {
   }
 }
 
-/* =========================
-   CONFIRMATION
-========================= */
 
 .confirmation-card {
   margin-top: 14px;
@@ -613,9 +576,6 @@ body {
   background: #f0f1f3;
 }
 
-/* =========================
-   INPUT
-========================= */
 
 .input-container {
   position: fixed;
@@ -724,9 +684,6 @@ body {
   font-size: 10px;
 }
 
-/* =========================
-   MOBILE
-========================= */
 
 @media (max-width: 650px) {
   .brand-area {
