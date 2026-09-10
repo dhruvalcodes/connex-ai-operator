@@ -172,7 +172,6 @@ RULES:
 
                 return {"reply": final_response.text}
 
-            # WRITE TOOL - WAIT FOR CONFIRMATION
             if function_name == "create_task":
 
                 pending_action = {
